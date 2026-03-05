@@ -4,837 +4,1335 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Suresh Marru — Georgia Tech</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Suresh Marru — Director, ARTISAN Center at Georgia Tech. Research in AI for science, cyberinfrastructure, and open-source scientific middleware (Apache Airavata/Custos)." />
+  <meta name="description" content="Suresh Marru — Director, ARTISAN Center at Georgia Tech. Research in AI for science, cyberinfrastructure, and open-source scientific middleware." />
   <link rel="canonical" href="https://smarru.github.io/" />
-
-  <!-- Social previews -->
   <meta property="og:title" content="Suresh Marru — Georgia Tech" />
-  <meta property="og:description" content="AI for Science • Cyberinfrastructure • Open Source (Apache Airavata/Custos) • ARTISAN Center" />
+  <meta property="og:description" content="AI for Science • Cyberinfrastructure • Open Source • ARTISAN Center" />
   <meta property="og:url" content="https://smarru.github.io/" />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- GT digital typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Slab:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
 
   <style>
-    :root{
-      /* GT primary colors */
-      --gt-gold: #B3A369;
-      --gt-navy: #003057;
+    :root {
+      --gold: #B3A369;
+      --gold-light: #d4c98a;
+      --gold-dark: #8a7d4e;
+      --navy: #003057;
+      --navy-mid: #00406e;
+      --navy-light: #1a5080;
       --white: #ffffff;
-
-      /* neutrals */
-      --ink: #0f1f2f;
-      --text: #1b2a3a;
-      --muted: #586777;
-      --line: rgba(0,48,87,.16);
-      --bg: #ffffff;
-      --panel: #f7f9fb;
-
-      --radius: 14px;
-      --radius2: 12px;
-      --max: 1120px;
-      --shadow: 0 10px 28px rgba(0,48,87,.10);
+      --off-white: #faf9f7;
+      --warm-gray: #f2f0ec;
+      --text: #1a1a1a;
+      --text-muted: #5a5a5a;
+      --text-light: #888;
+      --border: rgba(0,48,87,.12);
+      --max: 1080px;
     }
 
-    *{ box-sizing: border-box; }
-    html{ scroll-behavior: smooth; }
-    body{
-      margin: 0;
-      font-family: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
       color: var(--text);
-      background: var(--bg);
-      line-height: 1.65;
+      background: var(--off-white);
+      line-height: 1.6;
+      /* prevent horizontal scroll from pipeline */
+      overflow-x: hidden;
     }
 
-    a{ color: var(--gt-navy); text-decoration-thickness: .08em; text-underline-offset: .18em; }
-    a:hover{ color: #001d36; }
+    a { color: var(--navy); text-decoration: none; }
+    a:hover { color: var(--navy-mid); text-decoration: underline; text-underline-offset: 3px; }
 
-    /* ======= GT-STYLE HEADER ======= */
-    .gt-header{ position: sticky; top: 0; z-index: 50; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
-
-    /* Gold brand bar (GT uses the one-line logo here per guidance) */
-    .brandbar{
-      background: var(--gt-gold);
-      color: #111;
-    }
-    .brandbar .inner{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 10px 18px;
+    /* ─── TOP BAR ─── */
+    .topbar {
+      background: var(--navy);
+      padding: 0 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-    }
-    .gt-logo{
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 900;
-      letter-spacing: .02em;
-      text-transform: uppercase;
-      font-size: 13px;
-      color: #111;
-      text-decoration: none;
-    }
-    .gt-logo .mark{
-      width: 18px;
-      height: 18px;
-      border-radius: 4px;
-      background: rgba(0,48,87,.95);
-      display: inline-block;
-    }
-    .gt-logo:hover{ text-decoration: none; }
-
-    /* Navy title band */
-    .titleband{
-      background: var(--gt-navy);
-      color: white;
-      border-bottom: 1px solid rgba(255,255,255,.14);
-    }
-    .titleband .inner{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 14px 18px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 14px;
-      align-items: center;
-    }
-    .site-title{
-      margin: 0;
-      font-family: "Roboto Slab", Georgia, serif;
-      font-size: 20px;
-      letter-spacing: .2px;
-    }
-    .site-slogan{
-      margin: 2px 0 0;
-      color: rgba(255,255,255,.82);
-      font-weight: 500;
-      font-size: 13px;
+      height: 52px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      border-bottom: 3px solid var(--gold);
     }
 
-    .quicklinks{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: flex-end;
-    }
-    .qlink{
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.18);
-      color: white;
-      font-weight: 800;
-      font-size: 12px;
-      text-decoration: none;
-      background: rgba(255,255,255,.06);
-    }
-    .qlink:hover{ text-decoration:none; background: rgba(255,255,255,.10); }
-
-    /* Navigation row */
-    .navrow{
-      background: white;
-      border-bottom: 1px solid var(--line);
-    }
-    .navrow .inner{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 10px 18px;
+    .gt-wordmark {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    nav a{
-      font-weight: 900;
-      font-size: 13px;
-      color: var(--gt-navy);
-      padding: 8px 10px;
-      border-radius: 999px;
+      gap: 10px;
       text-decoration: none;
-      border: 1px solid transparent;
+      flex-shrink: 0;
     }
-    nav a:hover{
-      background: rgba(0,48,87,.05);
-      border-color: rgba(0,48,87,.16);
-    }
-
-    /* ======= PAGE LAYOUT ======= */
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 22px 18px 64px; }
-
-    .hero{
-      margin-top: 16px;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 16px;
-      align-items: start;
-    }
-    @media (max-width: 900px){ .hero{ grid-template-columns: 1fr; } }
-
-    .card{
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .card .hd{
-      padding: 14px 16px;
-      border-bottom: 1px solid rgba(0,48,87,.10);
-      background: linear-gradient(90deg, rgba(179,163,105,.18), rgba(0,48,87,.04));
-    }
-    .card .hd h1{
-      margin: 0;
-      font-family: "Roboto Slab", Georgia, serif;
-      font-size: 34px;
-      color: var(--gt-navy);
-      line-height: 1.1;
-    }
-    .card .hd .role{
-      margin: 8px 0 2px;
-      font-weight: 900;
-      color: var(--ink);
-    }
-    .card .hd .affil{
-      margin: 0;
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 14px;
-    }
-    .card .bd{ padding: 14px 16px 16px; }
-
-    .cta{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 8px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(0,48,87,.18);
-      background: white;
-      color: var(--gt-navy);
-      font-weight: 900;
-      font-size: 13px;
-      text-decoration:none;
-    }
-    .btn:hover{ background: rgba(0,48,87,.04); text-decoration:none; }
-    .btn.primary{
-      background: var(--gt-navy);
-      color: white;
-      border-color: var(--gt-navy);
-    }
-    .btn.primary:hover{ background: #001d36; }
-    .btn.gold{
-      background: var(--gt-gold);
-      color: #111;
-      border-color: rgba(179,163,105,.85);
-    }
-    .btn.gold:hover{ filter: brightness(.98); }
-
-    .meta{
-      display:grid;
-      gap: 10px;
-    }
-    .meta-row{
-      display:flex;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(0,48,87,.14);
-      background: var(--panel);
-    }
-    .meta-row span{
-      color: var(--muted);
-      font-weight: 900;
-      font-size: 12px;
-      letter-spacing: .03em;
-      text-transform: uppercase;
-    }
-    .meta-row strong{
-      font-weight: 900;
-      color: var(--gt-navy);
-    }
-
-    section{
-      margin-top: 18px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: white;
-      box-shadow: 0 10px 26px rgba(0,48,87,.08);
-      overflow: hidden;
-    }
-    .section-head{
-      padding: 14px 16px;
-      border-bottom: 1px solid rgba(0,48,87,.10);
-      background: linear-gradient(90deg, rgba(0,48,87,.06), rgba(179,163,105,.14));
-    }
-    .section-head h2{
-      margin: 0;
-      font-family: "Roboto Slab", Georgia, serif;
-      color: var(--gt-navy);
-      font-size: 20px;
-      letter-spacing: .2px;
-    }
-    .section-body{ padding: 14px 16px 16px; }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 14px;
-      margin-top: 12px;
-    }
-    @media (max-width: 900px){ .grid{ grid-template-columns: 1fr; } }
-    .mini{
-      border: 1px solid rgba(0,48,87,.12);
-      background: #fff;
-      border-radius: var(--radius2);
-      padding: 14px;
-    }
-    .mini h3{
-      margin: 0 0 6px;
-      font-family: "Roboto Slab", Georgia, serif;
-      color: var(--gt-navy);
-      font-size: 16px;
-    }
-    .tagline{
-      margin: 0 0 10px;
-      color: var(--muted);
+    .gt-wordmark svg { flex-shrink: 0; }
+    .gt-wordmark-text {
+      font-family: "DM Sans", sans-serif;
       font-weight: 700;
       font-size: 13px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
     }
-    .links{
-      margin-top: 10px;
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .gt-wordmark-text span {
+      display: block;
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: .06em;
+      color: rgba(255,255,255,.55);
+      text-transform: uppercase;
     }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,48,87,.16);
-      background: rgba(0,48,87,.03);
-      color: var(--gt-navy);
-      font-weight: 900;
+
+    /* Desktop nav */
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .topbar-nav a {
+      color: rgba(255,255,255,.75);
       font-size: 12px;
-      text-decoration:none;
+      font-weight: 500;
+      letter-spacing: .04em;
+      padding: 8px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: color .15s, background .15s;
+      white-space: nowrap;
     }
-    .pill:hover{ background: rgba(0,48,87,.06); text-decoration:none; }
-
-    .pub-year{
-      margin-top: 14px;
-      padding-top: 10px;
-      border-top: 3px solid rgba(179,163,105,.70);
-      font-weight: 900;
-      color: var(--gt-navy);
-      letter-spacing: .02em;
+    .topbar-nav a:hover {
+      color: white;
+      background: rgba(255,255,255,.08);
+      text-decoration: none;
     }
-    ol{ margin: 10px 0 0 20px; }
-    li{ margin: 10px 0; }
 
-    .backtop{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      margin-top: 14px;
-      padding: 10px 12px;
+    /* Hamburger button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      transition: background .15s;
+      flex-shrink: 0;
+    }
+    .hamburger:hover { background: rgba(255,255,255,.1); }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: rgba(255,255,255,.85);
+      border-radius: 2px;
+      transition: all .25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 52px;
+      left: 0;
+      right: 0;
+      background: var(--navy);
+      border-bottom: 3px solid var(--gold);
+      z-index: 199;
+      flex-direction: column;
+      padding: 8px 0 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(255,255,255,.8);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 13px 20px;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      transition: background .12s, color .12s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover, .mobile-menu a:active {
+      background: rgba(255,255,255,.07);
+      color: white;
+      text-decoration: none;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(179,163,105,.08) 0%, transparent 70%),
+        linear-gradient(135deg, rgba(0,30,60,1) 0%, rgba(0,48,87,1) 100%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      border: 80px solid rgba(179,163,105,.06);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 48px 24px 44px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Photo */
+    .photo-wrap { flex-shrink: 0; }
+    .photo-frame {
+      width: 148px;
+      height: 148px;
       border-radius: 12px;
-      border: 1px solid rgba(0,48,87,.16);
-      background: rgba(0,48,87,.03);
-      color: var(--gt-navy);
-      font-weight: 900;
-      text-decoration:none;
+      background: linear-gradient(135deg, rgba(179,163,105,.3), rgba(0,48,87,.6));
+      border: 3px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
-    .backtop:hover{ background: rgba(0,48,87,.06); text-decoration:none; }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-initials {
+      font-family: "EB Garamond", serif;
+      font-size: 52px;
+      font-weight: 500;
+      color: var(--gold-light);
+      letter-spacing: -2px;
+      user-select: none;
+    }
 
-    footer{
-      margin-top: 18px;
-      border-top: 4px solid var(--gt-gold);
-      background: var(--gt-navy);
-      color: rgba(255,255,255,.88);
-      padding: 18px 10px;
-      text-align:center;
+    /* Hero text */
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .hero-name {
+      font-family: "EB Garamond", serif;
+      font-size: clamp(34px, 5vw, 56px);
+      font-weight: 600;
+      color: white;
+      line-height: 1.05;
+      letter-spacing: -.5px;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,.85);
+      line-height: 1.5;
+      margin-bottom: 5px;
+    }
+    .hero-affil {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 22px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 22px;
+    }
+    .tag {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gold-light);
+      background: rgba(179,163,105,.12);
+      border: 1px solid rgba(179,163,105,.3);
+      border-radius: 4px;
+      padding: 4px 9px;
+      letter-spacing: .03em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      text-decoration: none;
+      transition: all .15s;
+      cursor: pointer;
+      border: none;
+      /* ensure tap targets are at least 44px tall */
+      min-height: 44px;
+    }
+    .btn-primary { background: var(--gold); color: #1a1200; }
+    .btn-primary:hover { background: var(--gold-light); color: #1a1200; text-decoration: none; }
+    .btn-ghost {
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.85);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.14); color: white; text-decoration: none; }
+
+    /* ─── MAIN LAYOUT ─── */
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+      display: grid;
+      grid-template-columns: 252px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* ─── SIDEBAR ─── */
+    .sidebar {
+      position: sticky;
+      top: 72px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .side-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .side-card-head {
+      background: linear-gradient(90deg, var(--navy), var(--navy-mid));
+      padding: 10px 16px;
+    }
+    .side-card-head h3 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+    .side-card-body { padding: 14px 16px; }
+
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
       font-size: 13px;
     }
-    footer a{ color: white; }
-    footer a:hover{ color: rgba(255,255,255,.92); }
+    .contact-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .contact-row:first-child { padding-top: 0; }
+    .contact-label {
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      min-width: 52px;
+      padding-top: 1px;
+      flex-shrink: 0;
+    }
+    .contact-val { color: var(--text); line-height: 1.4; word-break: break-all; }
+    .contact-val a { color: var(--navy); }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .stat-box {
+      text-align: center;
+      padding: 12px 6px;
+      background: var(--warm-gray);
+      border-radius: 8px;
+    }
+    .stat-num {
+      font-family: "EB Garamond", serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1;
+      display: block;
+    }
+    .stat-lbl {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 3px;
+      display: block;
+    }
+
+    .nav-links { display: flex; flex-direction: column; }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 9px 16px;
+      border-left: 3px solid transparent;
+      transition: all .15s;
+      text-decoration: none;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-links a:hover {
+      color: var(--navy);
+      border-left-color: var(--gold);
+      background: rgba(0,48,87,.03);
+      text-decoration: none;
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    .content {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* Section */
+    .section {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .section-head {
+      padding: 16px 20px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-head h2 {
+      font-family: "EB Garamond", serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: -.2px;
+    }
+    .section-accent {
+      height: 3px;
+      width: 24px;
+      background: var(--gold);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .section-body { padding: 20px; }
+    .section-body p {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .section-body p:last-child { margin-bottom: 0; }
+    .muted { color: var(--text-muted); }
+
+    /* Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .mini-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .mini-card h3 {
+      font-family: "EB Garamond", serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .mini-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 0;
+    }
+    .mini-card .tagline {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 7px;
+      display: block;
+    }
+    .mini-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .mini-card ul li {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      padding-left: 12px;
+      position: relative;
+    }
+    .mini-card ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--gold-dark);
+      font-weight: 700;
+    }
+
+    .pill-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy);
+      background: rgba(0,48,87,.06);
+      border: 1px solid rgba(0,48,87,.15);
+      border-radius: 4px;
+      padding: 5px 10px;
+      text-decoration: none;
+      margin-top: 10px;
+      min-height: 32px;
+    }
+    .pill-link:hover { background: rgba(0,48,87,.1); text-decoration: none; }
+
+    /* Publications */
+    .pub-year-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      padding: 12px 20px 8px;
+      border-top: 1px solid var(--border);
+      background: var(--off-white);
+    }
+    .pub-item {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: baseline;
+    }
+    .pub-num {
+      font-family: "EB Garamond", serif;
+      font-size: 17px;
+      color: var(--gold-dark);
+      font-weight: 600;
+      min-width: 20px;
+    }
+    .pub-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.4;
+      margin-bottom: 3px;
+    }
+    .pub-authors {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+      line-height: 1.4;
+    }
+    .pub-venue {
+      font-size: 12px;
+      color: var(--text-light);
+      font-style: italic;
+    }
+    .pub-venue a {
+      color: var(--navy-light);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    /* Mentoring stats */
+    .mentor-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 18px 0;
+    }
+    .mentor-stat {
+      text-align: center;
+      padding: 16px 10px;
+      background: linear-gradient(135deg, rgba(0,48,87,.04), rgba(179,163,105,.06));
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .mentor-stat .num {
+      font-family: "EB Garamond", serif;
+      font-size: 34px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1;
+      display: block;
+    }
+    .mentor-stat .lbl {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* Pipeline */
+    .pipeline {
+      display: flex;
+      align-items: center;
+      margin: 18px -20px;
+      padding: 0 20px 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      gap: 0;
+    }
+    .pipe-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+      min-width: 90px;
+    }
+    .pipe-box {
+      background: var(--navy);
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      padding: 8px 6px;
+      border-radius: 6px;
+      width: 100%;
+      line-height: 1.35;
+    }
+    .pipe-arrow {
+      font-size: 16px;
+      color: var(--gold);
+      padding: 0 3px;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      border-top: 4px solid var(--gold);
+      color: rgba(255,255,255,.6);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    footer a { color: rgba(255,255,255,.75); }
+    footer a:hover { color: white; }
+    footer strong { color: rgba(255,255,255,.9); }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow { animation: fadeUp .5s ease both; }
+    .hero-name    { animation: fadeUp .5s .1s ease both; }
+    .hero-title   { animation: fadeUp .5s .18s ease both; }
+    .hero-affil   { animation: fadeUp .5s .22s ease both; }
+    .hero-tags    { animation: fadeUp .5s .28s ease both; }
+    .hero-actions { animation: fadeUp .5s .34s ease both; }
+    .photo-frame  { animation: fadeUp .5s .05s ease both; }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE BREAKPOINTS
+    ═══════════════════════════════════════ */
+
+    /* Tablet: collapse sidebar into top strip */
+    @media (max-width: 900px) {
+      .topbar-nav { display: none; }
+      .hamburger  { display: flex; }
+
+      .page {
+        grid-template-columns: 1fr;
+        padding: 20px 16px 60px;
+        gap: 20px;
+      }
+
+      /* Sidebar becomes a horizontal scroll strip of compact cards */
+      .sidebar {
+        position: static;
+        flex-direction: row;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 12px;
+        padding-bottom: 4px;
+      }
+      .sidebar::-webkit-scrollbar { display: none; }
+
+      /* Hide quick-links nav card on mobile (already in hamburger) */
+      .sidebar .side-card:last-child { display: none; }
+
+      .side-card {
+        flex-shrink: 0;
+        width: 260px;
+      }
+
+      .content { gap: 20px; }
+    }
+
+    /* Mobile: single column hero */
+    @media (max-width: 600px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 32px 16px 32px;
+        text-align: center;
+      }
+
+      .photo-wrap {
+        display: flex;
+        justify-content: center;
+      }
+      .photo-frame { width: 120px; height: 120px; }
+      .photo-initials { font-size: 40px; }
+
+      .hero-eyebrow {
+        justify-content: center;
+      }
+      .hero-eyebrow::before { display: none; }
+
+      .hero-tags { justify-content: center; }
+      .hero-actions { justify-content: center; }
+
+      /* Hero affil: break onto multiple lines on tiny screens */
+      .hero-affil { font-size: 11.5px; }
+
+      /* Section padding tighter */
+      .section-head { padding: 14px 16px 12px; }
+      .section-body { padding: 16px; }
+      .section-body p { font-size: 14.5px; }
+
+      /* Two-col grid → one col */
+      .grid-2 { grid-template-columns: 1fr; gap: 10px; }
+
+      /* Mentoring stats: 3-col → still 3 but shorter */
+      .mentor-stat { padding: 12px 8px; }
+      .mentor-stat .num { font-size: 28px; }
+
+      /* Pubs: tighten padding */
+      .pub-year-label { padding: 10px 16px 6px; }
+      .pub-item { padding: 12px 16px; gap: 10px; }
+      .pub-title { font-size: 13.5px; }
+      .pub-authors { font-size: 12px; }
+    }
+
+    /* Very small screens */
+    @media (max-width: 380px) {
+      .hero-name { font-size: 30px; }
+      .hero-title { font-size: 13px; }
+      .mentor-stat-row { grid-template-columns: 1fr 1fr; }
+      .mentor-stat:last-child { grid-column: 1 / -1; }
+      .btn { font-size: 12px; padding: 9px 13px; }
+    }
   </style>
 </head>
 
 <body>
-  <header class="gt-header" id="top">
-    <div class="brandbar">
-      <div class="inner">
-        <!-- Placeholder: replace with approved GT one-line logo SVG per brand guidance -->
-        <a class="gt-logo" href="https://www.gatech.edu/" target="_blank" rel="noopener noreferrer" aria-label="Georgia Tech">
-          <span class="mark" aria-hidden="true"></span>
-          GEORGIA TECH
-        </a>
 
-        <div style="font-weight:900; font-size:12px; letter-spacing:.03em;">
-          Faculty Profile
+<!-- ─── TOP BAR ─── -->
+<header class="topbar">
+  <a class="gt-wordmark" href="https://www.gatech.edu/" target="_blank" rel="noopener noreferrer">
+    <!-- GT "T" mark in gold -->
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="28" height="28" rx="4" fill="#B3A369"/>
+      <text x="14" y="21" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#003057" text-anchor="middle">T</text>
+    </svg>
+    <div class="gt-wordmark-text">
+      Georgia Tech
+      <span>College of Computing</span>
+    </div>
+  </a>
+  <nav class="topbar-nav" aria-label="Page sections">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#opensource">Open Source</a>
+    <a href="#entrepreneurship">Ventures</a>
+    <a href="#mentoring">Mentoring</a>
+    <a href="#publications">Publications</a>
+  </nav>
+
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Mobile slide-down menu -->
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <a href="#about"            class="mob-link">About</a>
+  <a href="#research"         class="mob-link">Research &amp; ARTISAN</a>
+  <a href="#opensource"       class="mob-link">Open Source</a>
+  <a href="#entrepreneurship" class="mob-link">Entrepreneurship</a>
+  <a href="#mentoring"        class="mob-link">Mentoring &amp; Teaching</a>
+  <a href="#publications"     class="mob-link">Publications</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" aria-label="Profile header">
+  <div class="hero-inner">
+    <div class="photo-wrap">
+      <div class="photo-frame" title="Replace with your photo: add an <img src='photo.jpg' alt='Suresh Marru'> inside .photo-frame">
+        <!-- Replace this div with: <img src="your-photo.jpg" alt="Suresh Marru"> -->
+        <span class="photo-initials" aria-hidden="true">SM</span>
+      </div>
+    </div>
+    <div class="hero-text">
+      <div class="hero-eyebrow">Faculty Research Profile</div>
+      <h1 class="hero-name">Suresh Marru</h1>
+      <p class="hero-title">Research Professor, College of Computing<br/>Principal Research Scientist, Institute for Data Engineering and Science <br/>Director, Center for AI in Science and Engineering</p>
+      <p class="hero-affil">ARTISAN &nbsp;·&nbsp; College of Computing &nbsp;·&nbsp; IDEaS &nbsp;·&nbsp; Georgia Institute of Technology</p>
+      <div class="hero-tags">
+        <span class="tag">AI for Science</span>
+        <span class="tag">Cyberinfrastructure</span>
+        <span class="tag">Distributed Systems</span>
+        <span class="tag">Apache Airavata</span>
+        <span class="tag">Science Gateways</span>
+        <span class="tag">Open Source</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:smarru at gatech.edu">✉ Email</a>
+        <a class="btn btn-ghost" href="https://artisan.research.gatech.edu" target="_blank" rel="noopener noreferrer">ARTISAN Center ↗</a>
+        <a class="btn btn-ghost" href="https://orcid.org/0000-0002-6374-095X" target="_blank" rel="noopener noreferrer">ORCID ↗</a>
+        <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PAGE BODY ─── -->
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="side-card">
+      <div class="side-card-head"><h3>Contact</h3></div>
+      <div class="side-card-body">
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <div class="contact-val"><a href="mailto:smarru at gatech.edu">smarru at gatech.edu</a></div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Center</span>
+          <div class="contact-val"><a href="https://artisan.research.gatech.edu" target="_blank" rel="noopener noreferrer">ARTISAN ↗</a></div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">ORCID</span>
+          <div class="contact-val"><a href="https://orcid.org/0000-0002-6374-095X" target="_blank" rel="noopener noreferrer">0000-0002-6374-095X ↗</a></div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">GitHub</span>
+          <div class="contact-val"><a href="https://github.com/smarru" target="_blank" rel="noopener noreferrer">github.com/smarru ↗</a></div>
         </div>
       </div>
     </div>
 
-    <div class="titleband">
-      <div class="inner">
-        <div>
-          <div class="site-title">Suresh Marru</div>
-          <div class="site-slogan">Director, ARTISAN · College of Computing · Institute for Data Engineering and Science</div>
-        </div>
-        <div class="quicklinks">
-          <a class="qlink" href="mailto:smarru at gatech.edu">smarru at gatech.edu</a>
-          <a class="qlink" href="https://artisan.research.gatech.edu" target="_blank" rel="noopener noreferrer">ARTISAN ↗</a>
-          <a class="qlink" href="https://orcid.org/0000-0002-6374-095X" target="_blank" rel="noopener noreferrer">ORCID ↗</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="navrow">
-      <div class="inner">
-        <nav aria-label="Primary navigation">
-          <a href="#about">About</a>
-          <a href="#research">Research</a>
-          <a href="#opensource">Open Source</a>
-          <a href="#entrepreneurship">Entrepreneurship</a>
-          <a href="#mentoring">Mentoring</a>
-          <a href="#publications">Publications</a>
-        </nav>
-
-        <!-- Optional: add a CV link when you have it in /assets -->
-        <!-- <a class="btn gold" href="/assets/Suresh_Marru_CV.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a> -->
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <div class="hero">
-      <div class="card">
-        <div class="hd">
-          <h1>Suresh Marru</h1>
-          <p class="role">Director, Center for AI in Science and Engineering (ARTISAN)</p>
-          <p class="affil">Georgia Institute of Technology</p>
-        </div>
-        <div class="bd">
-          <p style="margin:0;">
-            Research at the intersection of artificial intelligence, computational science, and national-scale cyberinfrastructure —
-            building open, reusable research infrastructure; translating academic research into products; and mentoring the next generation.
-          </p>
-
-          <div class="cta" aria-label="Primary actions">
-            <a class="btn primary" href="mailto:smarru@gatech.edu">Email</a>
-            <a class="btn" href="https://artisan.research.gatech.edu" target="_blank" rel="noopener noreferrer">ARTISAN ↗</a>
-            <a class="btn" href="https://nexus.gatech.edu" target="_blank" rel="noopener noreferrer">Nexus ↗</a>
-            <a class="btn gold" href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+    <div class="side-card">
+      <div class="side-card-head"><h3>At a Glance</h3></div>
+      <div class="side-card-body">
+        <div class="stat-grid">
+          <div class="stat-box">
+            <span class="stat-num">150+</span>
+            <span class="stat-lbl">Publications</span>
           </div>
-
-          <p style="margin:12px 0 0; color: var(--muted);">
-            <strong style="color: var(--gt-navy);">Current Focus:</strong>
-            Building platforms that lower friction from local → campus → national resources, enabling reproducible AI+science workflows at scale.
-          </p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="hd">
-          <h1 style="font-size:20px;">Contact &amp; Profiles</h1>
-          <p class="affil">Quick references</p>
-        </div>
-        <div class="bd">
-          <div class="meta">
-            <div class="meta-row">
-              <span>Email</span>
-              <strong><a href="mailto:smarru@gatech.edu">smarru@gatech.edu</a></strong>
-            </div>
-            <div class="meta-row">
-              <span>ORCID</span>
-              <strong><a href="https://orcid.org/0000-0002-6374-095X" target="_blank" rel="noopener noreferrer">0000-0002-6374-095X ↗</a></strong>
-            </div>
-            <div class="meta-row">
-              <span>Center</span>
-              <strong><a href="https://artisan.research.gatech.edu" target="_blank" rel="noopener noreferrer">artisan.research.gatech.edu ↗</a></strong>
-            </div>
+          <div class="stat-box">
+            <span class="stat-num">38+</span>
+            <span class="stat-lbl">Students</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">30+</span>
+            <span class="stat-lbl">Research Projects</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">20+</span>
+            <span class="stat-lbl">Years Mentoring</span>
           </div>
         </div>
       </div>
     </div>
 
-    <section id="about">
-      <div class="section-head"><h2>About</h2></div>
+    <div class="side-card">
+      <div class="side-card-head"><h3>Quick Links</h3></div>
+      <nav class="nav-links" aria-label="Section navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research & ARTISAN</a>
+        <a href="#opensource">Open Source</a>
+        <a href="#entrepreneurship">Entrepreneurship</a>
+        <a href="#mentoring">Mentoring & Teaching</a>
+        <a href="#publications">Publications</a>
+      </nav>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="section-head">
+        <div class="section-accent"></div>
+        <h2>About</h2>
+      </div>
       <div class="section-body">
         <p>
-          Suresh Marru is a researcher, open source leader, entrepreneur, and mentor whose work sits at the intersection of
-          artificial intelligence, computational science, and national-scale cyberinfrastructure. He leads the ARTISAN Center at Georgia Tech —
-          a joint center between the College of Computing and the Institute for Data Engineering and Science — dedicated to accelerating scientific discovery through AI.
+          Suresh Marru is a researcher, open source leader, entrepreneur, and mentor whose work sits at the
+          intersection of artificial intelligence, computational science, and national-scale cyberinfrastructure.
+          He leads the <strong>ARTISAN Center</strong> at Georgia Tech, a joint center between the College of Computing
+          and the Institute for Data Engineering and Science, dedicated to accelerating scientific discovery through AI.
         </p>
         <p>
-          His career is defined by three parallel commitments: building open, reusable research infrastructure for the national scientific community;
-          translating academic research into real-world products and companies; and investing deeply in the growth of students and early-career professionals.
+          His career is defined by three parallel commitments: building open, reusable research infrastructure for the
+          national scientific community; translating academic research into real-world products and companies; and
+          investing deeply in the growth of students and early-career professionals.
         </p>
-        <a class="backtop" href="#top">Back to top ↑</a>
+        <p>
+          <strong>Current Focus:</strong> Building platforms that lower friction from local → campus → national resources,
+          enabling reproducible AI+science workflows at scale.
+        </p>
       </div>
     </section>
 
-    <section id="research">
-      <div class="section-head"><h2>Research &amp; ARTISAN Center</h2></div>
+    <!-- RESEARCH -->
+    <section class="section" id="research">
+      <div class="section-head">
+        <div class="section-accent"></div>
+        <h2>Research &amp; ARTISAN Center</h2>
+      </div>
       <div class="section-body">
         <p>
-          ARTISAN aims to accelerate advances in science and engineering by integrating cutting-edge artificial intelligence techniques.
-          We are dedicated to fostering interdisciplinary research, cultivating the next generation of AI experts, and developing innovative solutions
-          that address complex challenges in our world.
+          ARTISAN aims to accelerate advances in science and engineering by integrating cutting-edge AI techniques.
+          The center fosters interdisciplinary research, cultivates the next generation of AI experts, and develops
+          innovative solutions to complex challenges, from protein folding to materials science.
         </p>
-        <p class="muted">— <a href="https://artisan.research.gatech.edu" target="_blank" rel="noopener noreferrer">artisan.research.gatech.edu ↗</a></p>
 
-        <div class="grid">
-          <div class="mini">
+        <div class="grid-2">
+          <div class="mini-card">
             <h3>Cyberinfrastructure &amp; Distributed Systems</h3>
-            <p class="muted">Scalable, high-performance distributed systems that power AI and scientific research — from efficient data processing to computation at national scale.</p>
+            <p>Scalable, high-performance distributed systems that power AI and scientific research, from efficient data processing to computation at national scale.</p>
           </div>
-          <div class="mini">
+          <div class="mini-card">
             <h3>AI-Driven Solutions for Science</h3>
-            <p class="muted">Specialized AI/ML approaches tackling large-scale problems in protein modeling, quantum chemistry, climate modeling, and neuroscience.</p>
+            <p>Specialized AI/ML approaches tackling large-scale problems in protein modeling, quantum chemistry, climate modeling, and neuroscience.</p>
           </div>
-          <div class="mini">
+          <div class="mini-card">
             <h3>Interpretable AI for Discovery</h3>
-            <p class="muted">AI systems that not only make accurate predictions but provide meaningful, human-understandable insights that contribute to the development of scientific theories.</p>
+            <p>AI systems that not only make accurate predictions but provide meaningful, human-understandable insights contributing to the development of scientific theories.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Science Gateway Architectures</h3>
+            <p>User-centric, evolvable architectures enabling researchers to compose and execute complex workflows across heterogeneous computing resources.</p>
           </div>
         </div>
 
-        <div class="section-head" style="margin-top:14px;"><h2>Current Projects</h2></div>
+        <!-- Projects sub-section -->
+        <div class="section-head" style="margin: 24px -24px 0; padding-left: 24px; border-top: 1px solid var(--border); border-bottom: none; background: var(--off-white);">
+          <div class="section-accent"></div>
+          <h2 style="font-size: 17px;">Current Projects</h2>
+        </div>
 
-        <div class="grid">
-          <div class="mini">
+        <div class="grid-2" style="margin-top: 16px;">
+          <div class="mini-card">
+            <span class="tagline">NSF Category I · Advanced Computing</span>
             <h3>Nexus</h3>
-            <p class="tagline">NSF Category I Advanced Computing Infrastructure</p>
-            <p><strong>What:</strong> Georgia Tech's next-generation AI supercomputer providing a diverse array of AI software and hardware.</p>
-            <p><strong>How:</strong> A universal interface allows researchers to select and compose processes into workflows, enabling seamless scaling from local to national resources.</p>
-            <div class="links">
-              <a class="pill" href="https://nexus.gatech.edu" target="_blank" rel="noopener noreferrer">nexus.gatech.edu ↗</a>
-            </div>
+            <p>Georgia Tech's next-generation AI supercomputer with a universal interface for composing workflows and scaling seamlessly from local to national resources.</p>
+            <a class="pill-link" href="https://nexus.gatech.edu" target="_blank" rel="noopener noreferrer">nexus.gatech.edu ↗</a>
           </div>
-
-          <div class="mini">
+          <div class="mini-card">
+            <span class="tagline">NSF · Open Infrastructure</span>
             <h3>Cybershuttle</h3>
-            <p class="tagline">NSF · Open Infrastructure</p>
-            <p><strong>What:</strong> A user-facing cyberinfrastructure providing seamless access to a range of computing resources for researchers.</p>
-            <p><strong>How:</strong> Built on Apache Airavata; integrates locally deployed agents with centrally hosted middleware for end-to-end access to local, university, cloud, and NSF national computing resources.</p>
-            <div class="links">
-              <a class="pill" href="https://cybershuttle.org" target="_blank" rel="noopener noreferrer">cybershuttle.org ↗</a>
-            </div>
+            <p>User-facing cyberinfrastructure providing seamless access to local, university, cloud, and NSF national computing resources, built on Apache Airavata.</p>
+            <a class="pill-link" href="https://cybershuttle.org" target="_blank" rel="noopener noreferrer">cybershuttle.org ↗</a>
           </div>
-
-          <div class="mini">
+          <div class="mini-card">
+            <span class="tagline">NSF · Security Middleware</span>
             <h3>Custos</h3>
-            <p class="tagline">NSF · Security Middleware</p>
-            <p><strong>What:</strong> Open source security middleware for the science gateway community.</p>
-            <p><strong>Includes:</strong> Federated authentication via CILogon, secure credential storage via Vault, hierarchical group management, and user-level audit logs through an administrative portal.</p>
+            <p>Open source security middleware for the science gateway community — federated authentication via CILogon, credential management, group hierarchies, and audit logging.</p>
           </div>
-
-          <div class="mini">
+          <div class="mini-card">
+            <span class="tagline">NSF NAIRR · AI4Science</span>
             <h3>VizFold</h3>
-            <p class="tagline">NSF NAIRR · AI4Science</p>
-            <p><strong>What:</strong> Making AlphaFold and protein-folding models interpretable, visual, and explainable.</p>
-            <p><strong>How:</strong> Techniques for exploring structure predictions and intermediate network representations, integrated with Cybershuttle for interactive browser-based exploration.</p>
-            <div class="links">
-              <a class="pill" href="https://vizfold.github.io" target="_blank" rel="noopener noreferrer">vizfold.github.io ↗</a>
-            </div>
+            <p>Making AlphaFold and protein-folding models interpretable, visual, and explainable through interactive browser-based exploration integrated with Cybershuttle.</p>
+            <a class="pill-link" href="https://vizfold.github.io" target="_blank" rel="noopener noreferrer">vizfold.github.io ↗</a>
           </div>
-
-          <div class="mini">
+          <div class="mini-card">
+            <span class="tagline">Platform as a Service</span>
             <h3>SciGaP</h3>
-            <p class="tagline">Platform as a Service</p>
-            <p><strong>What:</strong> Science Gateways Platform as a Service — rapid development and stable hosting platform for science gateways.</p>
-            <p><strong>Includes:</strong> Multi-tenanted, language-independent API supporting user management, workflow execution, experiment archiving, and sharing services integrated into web, mobile, and desktop clients.</p>
-            <div class="links">
-              <a class="pill" href="https://scigap.org" target="_blank" rel="noopener noreferrer">scigap.org ↗</a>
-            </div>
+            <p>Science Gateways Platform as a Service — rapid development and stable hosting for science gateways with user management, workflow execution, and archiving services.</p>
+            <a class="pill-link" href="https://scigap.org" target="_blank" rel="noopener noreferrer">scigap.org ↗</a>
           </div>
         </div>
-
-        <a class="backtop" href="#top">Back to top ↑</a>
       </div>
     </section>
 
-    <section id="opensource">
-      <div class="section-head"><h2>Open Source Advocacy</h2></div>
+    <!-- OPEN SOURCE -->
+    <section class="section" id="opensource">
+      <div class="section-head">
+        <div class="section-accent"></div>
+        <h2>Open Source Advocacy</h2>
+      </div>
       <div class="section-body">
         <p>
-          Open source software is not just a development methodology for Suresh — it is a philosophy about how research infrastructure should be built and governed.
-          He believes that publicly-funded science requires openly-available, community-maintained tools, and has spent two decades putting that belief into practice.
-        </p>
-        <p>
-          As an elected member of the Apache Software Foundation and VP &amp; PMC Chair of Apache Airavata, he leads one of the most widely adopted open source platforms in computational science.
-          He has shepherded multiple projects through the Apache Incubator and serves as Google Summer of Code Organization Administrator for the Apache Foundation, actively growing the next generation of open source contributors.
+          Open source software is not just a development methodology — it is a philosophy about how publicly-funded
+          research infrastructure should be built and governed. As an elected member of the Apache Software Foundation
+          and VP &amp; PMC Chair of Apache Airavata, Suresh leads one of the most widely adopted open source platforms
+          in computational science.
         </p>
 
-        <div class="grid">
-          <div class="mini">
+        <div class="grid-2">
+          <div class="mini-card">
             <h3>Apache Software Foundation</h3>
-            <p class="muted">Elected Member &amp; VP, Apache Airavata</p>
+            <p>Elected Member &amp; VP of Apache Airavata. Shepherded multiple projects through the Apache Incubator, including Spark, Stratos, jclouds, SIS, and Open Climate Workbench.</p>
           </div>
-
-          <div class="mini">
+          <div class="mini-card">
             <h3>Apache Airavata</h3>
-            <p class="muted">Top-Level Apache project for managing and executing computational workflows across distributed resources. Deployed at 30+ major research institutions, supporting millions of computational jobs annually.</p>
-            <div class="links">
-              <a class="pill" href="https://airavata.apache.org" target="_blank" rel="noopener noreferrer">airavata.apache.org ↗</a>
-            </div>
+            <p>Top-Level Apache project for managing and executing computational workflows across distributed resources. Deployed at 30+ major research institutions, supporting millions of jobs annually.</p>
+            <a class="pill-link" href="https://airavata.apache.org" target="_blank" rel="noopener noreferrer">airavata.apache.org ↗</a>
           </div>
-
-          <div class="mini">
-            <h3>Airavata Django Portal</h3>
-            <p class="muted">Extensible web portal framework for building science gateways on Apache Airavata, enabling customizable researcher-facing interfaces across scientific domains.</p>
-            <div class="links">
-              <a class="pill" href="https://github.com/apache/airavata-django-portal" target="_blank" rel="noopener noreferrer">github.com/apache/airavata-django-portal ↗</a>
-            </div>
+          <div class="mini-card">
+            <h3>Cybershuttle</h3>
+            <p>An open-source cyberinfrastructure platform that enables seamless execution of scientific workflows across laptops, cloud platforms, and HPC systems.</p>
+            <a class="pill-link" href="https://github.com/cyber-shuttle" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
           </div>
-
-          <div class="mini">
-            <h3>Airavata Custos</h3>
-            <p class="muted">Open source security services for multi-tenant science gateways — federated identity, credential management, group hierarchies, and audit logging.</p>
-            <div class="links">
-              <a class="pill" href="https://github.com/apache/airavata-custos" target="_blank" rel="noopener noreferrer">github.com/apache/airavata-custos ↗</a>
-            </div>
-          </div>
-
-          <div class="mini">
-            <h3>Apache Incubator Mentorship</h3>
-            <p class="muted">Mentored projects from academic code to full Apache releases, including Apache Spark, Apache Stratos, Apache jclouds, Apache SIS, and Apache Open Climate Workbench.</p>
-            <div class="links">
-              <a class="pill" href="https://incubator.apache.org" target="_blank" rel="noopener noreferrer">incubator.apache.org ↗</a>
-            </div>
-          </div>
-
-          <div class="mini">
+          <div class="mini-card">
             <h3>Google Summer of Code</h3>
-            <p class="muted">Organization Mentor for the Apache Software Foundation, mentoring students worldwide in open source contribution.</p>
-            <div class="links">
-              <a class="pill" href="https://community.apache.org/gsoc.html" target="_blank" rel="noopener noreferrer">community.apache.org/gsoc.html ↗</a>
-            </div>
+            <p>Organization Administrator &amp; Mentor for the Apache Software Foundation across 20+ years, actively growing the next generation of open source contributors worldwide.</p>
+            <a class="pill-link" href="https://community.apache.org/gsoc.html" target="_blank" rel="noopener noreferrer">GSoC at Apache ↗</a>
           </div>
         </div>
-
-        <a class="backtop" href="#top">Back to top ↑</a>
       </div>
     </section>
 
-    <section id="entrepreneurship">
-      <div class="section-head"><h2>Entrepreneurship &amp; Technology Translation</h2></div>
+    <!-- ENTREPRENEURSHIP -->
+    <section class="section" id="entrepreneurship">
+      <div class="section-head">
+        <div class="section-accent"></div>
+        <h2>Entrepreneurship &amp; Technology Translation</h2>
+      </div>
       <div class="section-body">
         <p>
-          Suresh believes one of the most important — and undervalued — roles a researcher can play is building a clear pathway from academic discovery to real-world impact.
-          The journey from a published result to a working product used by people requires a different set of skills than research alone, and he has invested in developing them.
-        </p>
-        <p>
-          Through co-founding and leading multiple ventures, he has navigated the full lifecycle of product development, from early-stage prototyping through commercialization,
-          while remaining grounded in the academic and open source communities that generate the underlying innovations.
+          One of the most important, and undervalued, roles a researcher can play is building a clear pathway from
+          academic discovery to real-world impact. The journey from published result to working product requires a
+          different set of skills than research alone.
         </p>
 
-        <div class="grid">
-          <div class="mini">
-            <h3>Ventures</h3>
-            <ul>
-              <li><strong>CTO · 2023–Present</strong> — Folia (Bloomington, IN)</li>
-              <li><strong>Co-Founder &amp; CEO · 2022–2023</strong> — Carduelis Technologies (Bloomington, IN)</li>
-              <li><strong>Co-Founder &amp; CTO · 2016–2023</strong> — Datasprouts Corporation (Bloomington, IN)</li>
-            </ul>
-          </div>
-
-          <div class="mini">
-            <h3>Translation pipeline (concept)</h3>
-            <p class="muted">
-              Fundamental Research (NSF/NIH/NASA) → Open Source Platform (Apache Airavata/SciGaP) → Prototype &amp; Validate (Science Gateways) →
-              Commercialize (Startups/Products) → Real-World Impact (Researchers/Industry)
-            </p>
-          </div>
+        <!-- Pipeline diagram -->
+        <div class="pipeline">
+          <div class="pipe-step"><div class="pipe-box">Fundamental Research<br/><small style="opacity:.7">NSF / NIH / NASA</small></div></div>
+          <div class="pipe-arrow">→</div>
+          <div class="pipe-step"><div class="pipe-box">Open Source Platform<br/><small style="opacity:.7">Apache Airavata</small></div></div>
+          <div class="pipe-arrow">→</div>
+          <div class="pipe-step"><div class="pipe-box">Prototype &amp; Validate<br/><small style="opacity:.7">Science Gateways</small></div></div>
+          <div class="pipe-arrow">→</div>
+          <div class="pipe-step"><div class="pipe-box">Commercialize<br/><small style="opacity:.7">Startups / Products</small></div></div>
+          <div class="pipe-arrow">→</div>
+          <div class="pipe-step"><div class="pipe-box">Real-World Impact<br/><small style="opacity:.7">Researchers / Industry</small></div></div>
         </div>
 
-        <a class="backtop" href="#top">Back to top ↑</a>
+        <div class="grid-2" style="margin-top: 16px;">
+          <div class="mini-card">
+            <span class="tagline">2023 – Present</span>
+            <h3>Folia</h3>
+            <ul><li>CTO — Bloomington, IN</li></ul>
+          </div>
+          <div class="mini-card">
+            <span class="tagline">2022 – 2023</span>
+            <h3>Carduelis Technologies</h3>
+            <ul><li>Co-Founder &amp; CEO — Bloomington, IN</li></ul>
+          </div>
+          <div class="mini-card">
+            <span class="tagline">2016 – 2023</span>
+            <h3>Datasprouts Corporation</h3>
+            <ul><li>Co-Founder &amp; CTO — Bloomington, IN</li></ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="mentoring">
-      <div class="section-head"><h2>Mentoring &amp; Teaching</h2></div>
+    <!-- MENTORING -->
+    <section class="section" id="mentoring">
+      <div class="section-head">
+        <div class="section-accent"></div>
+        <h2>Mentoring &amp; Teaching</h2>
+      </div>
       <div class="section-body">
         <p>
-          Mentoring students and early-career professionals is not an obligation Suresh approaches as an afterthought — it is a core part of how he understands his role.
-          He has directly supervised or co-supervised more than 38 graduate students across PhD and Master's programs, and consistently creates environments where students work
-          on real, deployed systems with national impact rather than isolated academic exercises.
-        </p>
-        <p>
-          His mentoring philosophy is built around three ideas: that students deserve substantive problems worthy of their effort;
-          that the best learning happens at the boundary of research and practice; and that a mentor's job is to open doors — to ideas, networks, and opportunities —
-          that a student couldn't reach alone.
+          Mentoring students and early-career professionals is a core part of how Suresh understands his role.
+          He has directly supervised or co-supervised more than 38 graduate students across PhD and Master's programs,
+          consistently creating environments where students work on real, deployed systems with national impact.
         </p>
 
-        <div class="grid">
-          <div class="mini">
-            <h3>Real Problems, Real Stakes</h3>
-            <p class="muted">Students work on deployed systems used by thousands of researchers — not toy problems. The code they write runs in production. That accountability shapes how they think.</p>
+        <div class="mentor-stat-row">
+          <div class="mentor-stat">
+            <span class="num">9</span>
+            <span class="lbl">PhD Students</span>
           </div>
-          <div class="mini">
-            <h3>Research Meets Practice</h3>
-            <p class="muted">Connecting academic rigor with the realities of building and sustaining software. Students leave with both scholarly depth and practical engineering judgment.</p>
+          <div class="mentor-stat">
+            <span class="num">29+</span>
+            <span class="lbl">Master's Students</span>
           </div>
-          <div class="mini">
-            <h3>Opening Doors</h3>
-            <p class="muted">Leveraging networks in academia, open source, and industry to create pathways students couldn't find alone — including Google Summer of Code, Apache community, and startup ecosystems.</p>
+          <div class="mentor-stat">
+            <span class="num">20+</span>
+            <span class="lbl">Years of GSoC</span>
           </div>
         </div>
 
-        <div class="grid">
-          <div class="mini">
-            <h3>Mentoring at a Glance</h3>
+        <div class="grid-2">
+          <div class="mini-card">
+            <h3>Courses at Georgia Tech</h3>
             <ul>
-              <li><strong>9</strong> PhD students co-supervised</li>
-              <li><strong>29+</strong> Master's students supervised</li>
-              <li><strong>20+</strong> years of GSoC mentorship</li>
+              <li><strong>2023–Present</strong> — VIP: Airavata 2.0</li>
             </ul>
           </div>
-          <div class="mini">
-            <h3>Courses Developed &amp; Taught</h3>
+          <div class="mini-card">
+            <h3>Courses at Indiana University</h3>
             <ul>
-              <li><strong>2023–Present</strong> — VIP — Airavata 2.0 (Georgia Tech)</li>
-              <li><strong>2018–Present</strong> — Applied Distributed Systems &amp; Advanced Applied Distributed Systems (Indiana University, Graduate) · <a href="https://courses.airavata.org" target="_blank" rel="noopener noreferrer">courses.airavata.org ↗</a></li>
-              <li><strong>2016–2017</strong> — Science Gateway Architectures &amp; Advanced Science Gateway Architectures (Indiana University)</li>
-              <li><strong>Fall 2022</strong> — Data Analysis in Criminal Justice II (IU &amp; IIT Kanpur)</li>
-              <li><strong>Fall 2014</strong> — Management, Access, and Use of Big and Complex Data (Indiana University)</li>
+              <li><strong>2018–Present</strong> — Applied Distributed Systems (Graduate)</li>
+              <li><strong>2016–2017</strong> — Science Gateway Architectures</li>
+              <li><strong>Fall 2022</strong> — Data Analysis in Criminal Justice II</li>
+              <li><strong>Fall 2014</strong> — Management of Big &amp; Complex Data</li>
             </ul>
           </div>
         </div>
-
-        <a class="backtop" href="#top">Back to top ↑</a>
       </div>
     </section>
 
-    <section id="publications">
-      <div class="section-head"><h2>Selected Publications</h2></div>
-      <div class="section-body">
-        <p class="muted">
-          Showing 11 representative publications from 145+ total. Full bibliography via
-          <a href="https://orcid.org/0000-0002-6374-095X" target="_blank" rel="noopener noreferrer">ORCID ↗</a>
-          and
-          <a href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>.
+    <!-- PUBLICATIONS -->
+    <section class="section" id="publications">
+      <div class="section-head">
+        <div class="section-accent"></div>
+        <h2>Selected Publications</h2>
+      </div>
+      <div class="section-body" style="padding-bottom: 4px;">
+        <p class="muted" style="font-size:13.5px;">
+          11 representative works from 145+ total. Full bibliography:
+          <a href="https://orcid.org/0000-0002-6374-095X" target="_blank" rel="noopener noreferrer">ORCID ↗</a> &nbsp;·&nbsp;
+          <a href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
         </p>
-
-        <div class="pub-year">2023</div>
-        <ol>
-          <li>
-            <strong>Cybershuttle: An End-to-End Cyberinfrastructure Continuum to Accelerate Discovery in Science and Engineering</strong><br/>
-            Suresh Marru, Marlon Pierce, Beth Plale, Sudhakar Pamidighantam, Dimuthu Wannipurage, Marcus Christie, et al.<br/>
-            Practice and Experience in Advanced Research Computing (PEARC '23), ACM.
-            <a href="https://doi.org/10.1145/3569951.3593602" target="_blank" rel="noopener noreferrer">doi:10.1145/3569951.3593602 ↗</a>
-          </li>
-          <li>
-            <strong>Airavata Metascheduler: A Reliable, Fault Tolerant, and Resource-Aware Job Scheduling Service</strong><br/>
-            Isuru Ranawaka, Eroma Abeysinghe, Dimuthu Wannipurage, Suresh Marru, Marcus Christie, Sudhakar Pamidighantam, Marlon Pierce<br/>
-            PEARC '23, ACM.
-            <a href="https://doi.org/10.1145/3569951.3593605" target="_blank" rel="noopener noreferrer">doi:10.1145/3569951.3593605 ↗</a>
-          </li>
-          <li>
-            <strong>Science Gateways and AI/ML: How Can Gateway Concepts and Solutions Meet the Needs in Data Science?</strong><br/>
-            Sandra Gesing, Marlon Pierce, Suresh Marru, Michael Zentner, et al.<br/>
-            IntechOpen.
-            <a href="https://doi.org/10.5772/intechopen.110144" target="_blank" rel="noopener noreferrer">doi:10.5772/intechopen.110144 ↗</a>
-          </li>
-        </ol>
-
-        <div class="pub-year">2022</div>
-        <ol start="4">
-          <li>
-            <strong>A Framework to Capture and Reproduce the Absolute State of Jupyter Notebooks</strong><br/>
-            Dimuthu Wannipurage, Suresh Marru, Marlon Pierce<br/>
-            PEARC '22, ACM.
-            <a href="https://doi.org/10.1145/3491418.3530296" target="_blank" rel="noopener noreferrer">doi:10.1145/3491418.3530296 ↗</a>
-          </li>
-        </ol>
-
-        <div class="pub-year">2021</div>
-        <ol start="5">
-          <li>
-            <strong>Jetstream2: Accelerating Cloud Computing via Jetstream</strong><br/>
-            David Y. Hancock, Jeremy Fischer, Marlon Pierce, Suresh Marru, et al.<br/>
-            PEARC '21, ACM.
-            <a href="https://doi.org/10.1145/3437359.3465565" target="_blank" rel="noopener noreferrer">doi:10.1145/3437359.3465565 ↗</a>
-          </li>
-          <li>
-            <strong>User-Centric Design and Evolvable Architecture for Science Gateways: A Case Study</strong><br/>
-            Suresh Marru, Tanya Kuruvilla, Eroma Abeysinghe, Donald McMullen, Marlon Pierce, et al.<br/>
-            IEEE/ACM CCGrid, 2021.
-          </li>
-        </ol>
-
-        <div class="pub-year">2020</div>
-        <ol start="7">
-          <li>
-            <strong>Custos: Security Middleware for Science Gateways</strong><br/>
-            Isuru Ranawaka, Suresh Marru, Jim Basney, Terry Fleury, Marlon Pierce, et al.<br/>
-            PEARC '20, ACM.
-            <a href="https://doi.org/10.1145/3311790.3396635" target="_blank" rel="noopener noreferrer">doi:10.1145/3311790.3396635 ↗</a>
-          </li>
-          <li>
-            <strong>Managing Authentication and Authorization in Distributed Science Gateway Middleware</strong><br/>
-            Marcus A. Christie, Anuj Bhandar, Supun Nakandala, Suresh Marru, Eroma Abeysinghe, Sudhakar Pamidighantam, Marlon E. Pierce<br/>
-            Future Generation Computer Systems, 111, 780–785, 2020.
-          </li>
-        </ol>
-
-        <div class="pub-year">2015 – 2016</div>
-        <ol start="9">
-          <li>
-            <strong>Apache Airavata as a Laboratory: Architecture and Case Study for Component-Based Gateway Middleware</strong><br/>
-            Suresh Marru, Marlon Pierce, Sudhakar Pamidighantam, Chathuri Wimalasena<br/>
-            SCREAM '15, ACM.
-            <a href="https://doi.org/10.1145/2753524.2753529" target="_blank" rel="noopener noreferrer">doi:10.1145/2753524.2753529 ↗</a>
-          </li>
-          <li>
-            <strong>Integrating Apache Airavata with Docker, Marathon, and Mesos</strong><br/>
-            Pankaj Saha, Madhusudhan Govindaraju, Suresh Marru, Marlon Pierce<br/>
-            Concurrency and Computation: Practice &amp; Experience, 28(7), 1952–1959.
-            <a href="https://doi.org/10.1002/cpe.3708" target="_blank" rel="noopener noreferrer">doi:10.1002/cpe.3708 ↗</a>
-          </li>
-        </ol>
-
-        <div class="pub-year">2011</div>
-        <ol start="11">
-          <li>
-            <strong>Apache Airavata: A Framework for Distributed Applications and Computational Workflows</strong><br/>
-            Suresh Marru, Lahiru Gunathilake, Chathura Herath, Patanachai Tangchaisin, Marlon Pierce, Chris Mattmann, et al.<br/>
-            GCE '11, ACM.
-            <a href="https://doi.org/10.1145/2110486.2110490" target="_blank" rel="noopener noreferrer">doi:10.1145/2110486.2110490 ↗</a>
-          </li>
-        </ol>
-
-        <a class="backtop" href="#top">Back to top ↑</a>
       </div>
+
+      <div class="pub-year-label">2023</div>
+
+      <div class="pub-item">
+        <span class="pub-num">1</span>
+        <div>
+          <div class="pub-title">Cybershuttle: An End-to-End Cyberinfrastructure Continuum to Accelerate Discovery in Science and Engineering</div>
+          <div class="pub-authors">Suresh Marru, Marlon Pierce, Beth Plale, Sudhakar Pamidighantam, Dimuthu Wannipurage, Marcus Christie, et al.</div>
+          <div class="pub-venue">Practice and Experience in Advanced Research Computing (PEARC '23), ACM &nbsp;·&nbsp; <a href="https://doi.org/10.1145/3569951.3593602" target="_blank" rel="noopener noreferrer">doi:10.1145/3569951.3593602 ↗</a></div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-num">2</span>
+        <div>
+          <div class="pub-title">Airavata Metascheduler: A Reliable, Fault Tolerant, and Resource-Aware Job Scheduling Service</div>
+          <div class="pub-authors">Isuru Ranawaka, Eroma Abeysinghe, Dimuthu Wannipurage, Suresh Marru, Marcus Christie, Sudhakar Pamidighantam, Marlon Pierce</div>
+          <div class="pub-venue">PEARC '23, ACM &nbsp;·&nbsp; <a href="https://doi.org/10.1145/3569951.3593605" target="_blank" rel="noopener noreferrer">doi:10.1145/3569951.3593605 ↗</a></div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-num">3</span>
+        <div>
+          <div class="pub-title">Science Gateways and AI/ML: How Can Gateway Concepts and Solutions Meet the Needs in Data Science?</div>
+          <div class="pub-authors">Sandra Gesing, Marlon Pierce, Suresh Marru, Michael Zentner, et al.</div>
+          <div class="pub-venue">IntechOpen &nbsp;·&nbsp; <a href="https://doi.org/10.5772/intechopen.110144" target="_blank" rel="noopener noreferrer">doi:10.5772/intechopen.110144 ↗</a></div>
+        </div>
+      </div>
+
+      <div class="pub-year-label">2022</div>
+
+      <div class="pub-item">
+        <span class="pub-num">4</span>
+        <div>
+          <div class="pub-title">A Framework to Capture and Reproduce the Absolute State of Jupyter Notebooks</div>
+          <div class="pub-authors">Dimuthu Wannipurage, Suresh Marru, Marlon Pierce</div>
+          <div class="pub-venue">PEARC '22, ACM &nbsp;·&nbsp; <a href="https://doi.org/10.1145/3491418.3530296" target="_blank" rel="noopener noreferrer">doi:10.1145/3491418.3530296 ↗</a></div>
+        </div>
+      </div>
+
+      <div class="pub-year-label">2021</div>
+
+      <div class="pub-item">
+        <span class="pub-num">5</span>
+        <div>
+          <div class="pub-title">Jetstream2: Accelerating Cloud Computing via Jetstream</div>
+          <div class="pub-authors">David Y. Hancock, Jeremy Fischer, Marlon Pierce, Suresh Marru, et al.</div>
+          <div class="pub-venue">PEARC '21, ACM &nbsp;·&nbsp; <a href="https://doi.org/10.1145/3437359.3465565" target="_blank" rel="noopener noreferrer">doi:10.1145/3437359.3465565 ↗</a></div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-num">6</span>
+        <div>
+          <div class="pub-title">User-Centric Design and Evolvable Architecture for Science Gateways: A Case Study</div>
+          <div class="pub-authors">Suresh Marru, Tanya Kuruvilla, Eroma Abeysinghe, Donald McMullen, Marlon Pierce, et al.</div>
+          <div class="pub-venue">IEEE/ACM CCGrid, 2021</div>
+        </div>
+      </div>
+
+      <div class="pub-year-label">2020</div>
+
+      <div class="pub-item">
+        <span class="pub-num">7</span>
+        <div>
+          <div class="pub-title">Custos: Security Middleware for Science Gateways</div>
+          <div class="pub-authors">Isuru Ranawaka, Suresh Marru, Jim Basney, Terry Fleury, Marlon Pierce, et al.</div>
+          <div class="pub-venue">PEARC '20, ACM &nbsp;·&nbsp; <a href="https://doi.org/10.1145/3311790.3396635" target="_blank" rel="noopener noreferrer">doi:10.1145/3311790.3396635 ↗</a></div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-num">8</span>
+        <div>
+          <div class="pub-title">Managing Authentication and Authorization in Distributed Science Gateway Middleware</div>
+          <div class="pub-authors">Marcus A. Christie, Anuj Bhandar, Supun Nakandala, Suresh Marru, Eroma Abeysinghe, Sudhakar Pamidighantam, Marlon E. Pierce</div>
+          <div class="pub-venue">Future Generation Computer Systems, 111, 780–785, 2020</div>
+        </div>
+      </div>
+
+      <div class="pub-year-label">2015 – 2016</div>
+
+      <div class="pub-item">
+        <span class="pub-num">9</span>
+        <div>
+          <div class="pub-title">Apache Airavata as a Laboratory: Architecture and Case Study for Component-Based Gateway Middleware</div>
+          <div class="pub-authors">Suresh Marru, Marlon Pierce, Sudhakar Pamidighantam, Chathuri Wimalasena</div>
+          <div class="pub-venue">SCREAM '15, ACM &nbsp;·&nbsp; <a href="https://doi.org/10.1145/2753524.2753529" target="_blank" rel="noopener noreferrer">doi:10.1145/2753524.2753529 ↗</a></div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <span class="pub-num">10</span>
+        <div>
+          <div class="pub-title">Integrating Apache Airavata with Docker, Marathon, and Mesos</div>
+          <div class="pub-authors">Pankaj Saha, Madhusudhan Govindaraju, Suresh Marru, Marlon Pierce</div>
+          <div class="pub-venue">Concurrency and Computation: Practice &amp; Experience, 28(7), 1952–1959 &nbsp;·&nbsp; <a href="https://doi.org/10.1002/cpe.3708" target="_blank" rel="noopener noreferrer">doi:10.1002/cpe.3708 ↗</a></div>
+        </div>
+      </div>
+
+      <div class="pub-year-label">2011</div>
+
+      <div class="pub-item" style="margin-bottom: 8px;">
+        <span class="pub-num">11</span>
+        <div>
+          <div class="pub-title">Apache Airavata: A Framework for Distributed Applications and Computational Workflows</div>
+          <div class="pub-authors">Suresh Marru, Lahiru Gunathilake, Chathura Herath, Patanachai Tangchaisin, Marlon Pierce, Chris Mattmann, et al.</div>
+          <div class="pub-venue">GCE '11, ACM &nbsp;·&nbsp; <a href="https://doi.org/10.1145/2110486.2110490" target="_blank" rel="noopener noreferrer">doi:10.1145/2110486.2110490 ↗</a></div>
+        </div>
+      </div>
+
     </section>
 
-    <footer>
-      Suresh Marru · Georgia Tech ·
-      <a href="mailto:smarru@gatech.edu">smarru@gatech.edu</a> ·
-      <a href="https://artisan.research.gatech.edu" target="_blank" rel="noopener noreferrer">ARTISAN ↗</a> ·
-      <a href="https://orcid.org/0000-0002-6374-095X" target="_blank" rel="noopener noreferrer">ORCID ↗</a>
-    </footer>
   </main>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <strong>Suresh Marru</strong> &nbsp;·&nbsp;
+  Director, ARTISAN Center &nbsp;·&nbsp;
+  Georgia Institute of Technology &nbsp;·&nbsp;
+  <a href="mailto:smarru at gatech.edu">smarru at gatech.edu</a>
+  <br/><br/>
+  <small>© 2025 Suresh Marru · <a href="https://www.gatech.edu/" target="_blank" rel="noopener noreferrer">gatech.edu</a></small>
+</footer>
+
+<script>
+  // Hamburger / mobile menu
+  const btn  = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
+
+  function closeMenu() {
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close when a mobile nav link is tapped
+  menu.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on outside tap
+  document.addEventListener('click', e => {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) closeMenu();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+</script>
 </body>
 </html>
